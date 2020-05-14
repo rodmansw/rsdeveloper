@@ -45,7 +45,7 @@ export default function Seo({ title, description = '' }) {
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:creator" content={siteMetadata.social.twitter} />
       <meta name="twitter:image" content={iconUrl} />
-      <meta name="twitter:image:alt" content="Ubbi" />
+      <meta name="twitter:image:alt" content="RSDeveloper" />
 
       <meta name="apple-mobile-web-app-title" content={title} />
       <meta name="apple-mobile-web-app-capable" content="yes" />
