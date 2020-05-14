@@ -37,4 +37,4 @@ You can check out [the Next.js GitHub repository](https://github.com/zeit/next.j
 
 ## ☁ Deploy
 
-[![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/Jfelix61/nextjs-starter-blog)
+[![Deploy with ZEIT Now](https://zeit.co/button)](https://zeit.co/import/project?template=https://github.com/Rodman-Sw/rsdeveloper)
