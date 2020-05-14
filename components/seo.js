@@ -29,7 +29,7 @@ export default function Seo({ title, description = '' }) {
 
       <meta name="description" content={metaDescription} />
       <meta property="og:type" content="object" />
-      <meta property="og:site_name" content="Orax" />
+      <meta property="og:site_name" content="RSDeveloper" />
       <meta name="og:title" property="og:title" content={title} />
       <meta
         name="og:description"
