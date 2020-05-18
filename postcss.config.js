@@ -3,7 +3,7 @@ const purgecss = [
   {
     content: ['./components/**/*.js', './pages/**/*.js'],
     defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-    whitelist: ['lazyloaded'],
+    whitelist: ['lazyloaded', 'dark-mode'],
     whitelistPatterns: [/toggle/]
   }
 ]
