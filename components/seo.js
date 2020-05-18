@@ -6,7 +6,7 @@ import { getSiteMetaData } from 'utils/helpers'
 
 const siteMetadata = getSiteMetaData()
 
-export default function Seo({ title, description = '' }) {
+export default function Seo({ title, image, description = '' }) {
   const metaDescription = description || siteMetadata.description
 
   return (
@@ -36,7 +36,7 @@ export default function Seo({ title, description = '' }) {
         property="og:description"
         content={metaDescription}
       />
-      <meta property="og:image" content={iconUrl} />
+      <meta property="og:image" content={image || iconUrl} />
       <meta property="og:image:width" content="64" />
       <meta property="og:image:height" content="64" />
 
@@ -44,7 +44,7 @@ export default function Seo({ title, description = '' }) {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={metaDescription} />
       <meta name="twitter:creator" content={siteMetadata.social.twitter} />
-      <meta name="twitter:image" content={iconUrl} />
+      <meta name="twitter:image" content={image || iconUrl} />
       <meta name="twitter:image:alt" content="RSDeveloper" />
 
       <meta name="apple-mobile-web-app-title" content={title} />

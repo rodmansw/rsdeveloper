@@ -5,7 +5,7 @@ export default function Bio() {
   const { author, social } = getSiteMetaData()
 
   return (
-    <div className="mb-12">
+    <div className="mb-10">
       <div className="flex items-center mb-6">
         <Image
           className="flex-shrink-0 w-12 h-12 mb-0 mr-3 rounded-full"

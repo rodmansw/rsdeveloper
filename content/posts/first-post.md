@@ -1,5 +1,6 @@
 ---
 title: First post
+image: reading.png
 description: The first post is the most memorable one.
 date: 2020-05-13T11:00:00.000Z
 ---

@@ -1,11 +1,18 @@
+import { useEffect } from 'react'
 import Link from 'next/link'
 
 import Layout from 'components/layout'
 import Bio from 'components/bio'
 import SEO from 'components/seo'
+
 import { getSortedPosts } from 'utils/posts'
+import { trackPage } from 'utils/analytics'
 
 export default function Home({ posts }) {
+  useEffect(() => {
+    trackPage()
+  }, [])
+
   return (
     <Layout>
       <SEO />

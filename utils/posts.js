@@ -68,5 +68,11 @@ export function getPostBySlug(slug) {
     date: getFormattedDate(data.date)
   }
 
-  return { frontmatter, post: { content, excerpt } }
+  const posts = getSortedPosts().reverse()
+
+  const postIndex = posts.findIndex(post => post.slug === slug)
+  const prevPost = posts[postIndex - 1] || null
+  const nextPost = posts[postIndex + 1] || null
+
+  return { frontmatter, slug, post: { content, excerpt }, prevPost, nextPost }
 }

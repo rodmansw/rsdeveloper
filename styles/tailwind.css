@@ -8,14 +8,26 @@
   --primary: rgba(67, 65, 144, 1);
   --secondary: rgba(76, 81, 191, 1);
   --ternary: rgba(26, 32, 44, 1);
+  --inlineCode-bg: rgba(115, 124, 153, 0.2);
+  --inlineCode-text: rgba(67, 65, 144, 1);
 }
 
-[data-mode='dark'] {
+.dark-mode {
   --bg: #282c35;
   --bg-secondary: #363c48;
   --primary: rgba(127, 156, 245, 1);
   --secondary: rgba(163, 191, 250, 1);
   --ternary: hsla(0, 0%, 100%, 0.88);
+  --inlineCode-bg: rgba(115, 124, 153, 0.2);
+  --inlineCode-text: #e6e6e6;
+}
+
+.inline-code {
+  border-radius: 0.3em;
+  background: var(--inlineCode-bg);
+  color: var(--inlineCode-text);
+  padding: 0.15em 0.2em 0.05em;
+  white-space: normal;
 }
 
 /* Styles for lazy loaded images */

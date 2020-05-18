@@ -19,15 +19,12 @@ SutroTheme.overrideThemeStyles = ({ rhythm }, options) => ({
   },
   pre: {
     textRendering: 'optimizeLegibility'
+  },
+  a: {
+    textRendering: 'optimizeLegibility',
+    color: 'var(--secondary)'
   }
 })
-
-SutroTheme.googleFonts = [
-  {
-    name: 'Montserrat',
-    styles: ['100', '200', '300', '400', '400i', '700', '700i']
-  }
-]
 
 SutroTheme.scaleRatio = 5 / 2
 

@@ -13,7 +13,7 @@ export default function BlogHeader({
       className={
         className
           ? `flex justify-between items-center ${className}`
-          : `mb-6 flex justify-between items-center`
+          : `mb-2 flex justify-between items-center`
       }
     >
       <h1>

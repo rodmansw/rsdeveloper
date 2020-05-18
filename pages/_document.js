@@ -16,6 +16,7 @@ export default class MyDocument extends Document {
         <body className="bg-blog-bg">
           <Main />
           <NextScript />
+          <script src="/noflash.js" />
         </body>
       </Html>
     )
