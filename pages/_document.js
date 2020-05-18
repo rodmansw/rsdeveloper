@@ -14,9 +14,9 @@ export default class MyDocument extends Document {
           <TypographyStyle typography={typography} />
         </Head>
         <body className="bg-blog-bg">
+          <script src="/noflash.js" />
           <Main />
           <NextScript />
-          <script src="/noflash.js" />
         </body>
       </Html>
     )
