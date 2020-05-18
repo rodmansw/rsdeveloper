@@ -1,6 +1,8 @@
 import ReactGA from 'react-ga'
 
-ReactGA.initialize(process.env.NEXT_PUBLIC_ANALYTICS_ID)
+ReactGA.initialize(process.env.NEXT_PUBLIC_ANALYTICS_ID, {
+  gaOptions: { cookieFlags: 'max-age=7200;secure;samesite=Strict' }
+})
 
 export function trackEvent(action, category, options = {}) {
   ReactGA.event({
