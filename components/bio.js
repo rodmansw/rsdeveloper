@@ -1,9 +1,9 @@
 import { getSiteMetaData } from 'utils/helpers'
 import Image from './image'
 
-export default function Bio() {
-  const { author, social } = getSiteMetaData()
+const { author, social } = getSiteMetaData()
 
+export default function Bio() {
   return (
     <div className="mb-10">
       <div className="flex items-center mb-6">

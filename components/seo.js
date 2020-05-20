@@ -6,7 +6,12 @@ import { getSiteMetaData } from 'utils/helpers'
 
 const siteMetadata = getSiteMetaData()
 
-export default function Seo({ title, image, description = '' }) {
+export default function Seo({
+  title,
+  image,
+  description = '',
+  canonicalUrl = ''
+}) {
   const metaDescription = description || siteMetadata.description
 
   return (
@@ -22,6 +27,9 @@ export default function Seo({ title, image, description = '' }) {
         name="monetization"
         content={process.env.NEXT_PUBLIC_MONETIZATION}
       />
+      {canonicalUrl && (
+        <link rel="canonical" href={`${siteMetadata.siteUrl}${canonicalUrl}`} />
+      )}
       <meta
         name="keywords"
         content="rodman swanston, rodman, swanston, personal blog, rodman_sw, roman-sw, rodman sw, rodman blog, rs, rs developer, rsdeveloper, developer blog, rs blog"

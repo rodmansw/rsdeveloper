@@ -74,5 +74,16 @@ export function getPostBySlug(slug) {
   const prevPost = posts[postIndex - 1] || null
   const nextPost = posts[postIndex + 1] || null
 
-  return { frontmatter, slug, post: { content, excerpt }, prevPost, nextPost }
+  const suggestions = posts.filter(post =>
+    frontmatter.suggestions?.includes(post.slug)
+  )
+
+  return {
+    frontmatter,
+    slug,
+    post: { content, excerpt },
+    prevPost,
+    nextPost,
+    suggestions
+  }
 }

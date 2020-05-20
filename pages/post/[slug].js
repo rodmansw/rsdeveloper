@@ -1,47 +1,34 @@
 import { useEffect } from 'react'
 import ReactMarkdown from 'react-markdown/with-html'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import codeStyle from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark'
 import Link from 'next/link'
 
 import Layout from 'components/layout'
 import SEO from 'components/seo'
 import Image from 'components/image'
-import Bio from 'components/bio'
-import BlogHeader from 'components/blog-header'
+import PostFooter from 'components/post-footer'
+import {
+  InlineCode,
+  CodeBlock,
+  MarkdownImage
+} from 'components/makdown-features'
 
 import { getPostBySlug, getPostsSlugs } from 'utils/posts'
 import { trackPage } from 'utils/analytics'
+import { getSiteMetaData } from 'utils/helpers'
 
-function InlineCode({ value }) {
-  return <code className="inline-code">{value}</code>
-}
+const siteMetadata = getSiteMetaData()
 
-function CodeBlock({ language, value }) {
-  return (
-    <div className="mb-10">
-      <SyntaxHighlighter language={language} style={codeStyle}>
-        {value}
-      </SyntaxHighlighter>
-    </div>
-  )
-}
-
-function MarkdownImage({ alt, src }) {
-  return (
-    <Image
-      key={src}
-      alt={alt}
-      src={require(`../../content/assets/${src}`)}
-      previewSrc={require(`../../content/assets/${src}?lqip`)}
-      className="w-full"
-    />
-  )
-}
-
-export default function Post({ post, frontmatter, slug, prevPost, nextPost }) {
+export default function Post({
+  post,
+  frontmatter,
+  slug,
+  prevPost,
+  nextPost,
+  suggestions
+}) {
+  const postUrl = `post/${slug}`
   const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(
-    `https://rsdeveloper.now.sh/post/${slug}`
+    `${siteMetadata.siteUrl}${postUrl}`
   )}`
 
   useEffect(() => {
@@ -52,6 +39,7 @@ export default function Post({ post, frontmatter, slug, prevPost, nextPost }) {
     <Layout>
       <SEO
         title={frontmatter.title}
+        canonicalUrl={postUrl}
         description={frontmatter.description || post.excerpt}
         image={
           frontmatter.image
@@ -59,7 +47,6 @@ export default function Post({ post, frontmatter, slug, prevPost, nextPost }) {
             : ''
         }
       />
-
       <article>
         <header>
           <h1 className="mt-0 mb-2">{frontmatter.title}</h1>
@@ -83,28 +70,66 @@ export default function Post({ post, frontmatter, slug, prevPost, nextPost }) {
       >
         Discuss on Twitter
       </a>
-      <footer className="mt-6">
-        <BlogHeader isRoot={false} className="mb-0" themeSwitcher={false} />
-        <Bio />
-        <p className="flex justify-between text-md mb-10">
-          {prevPost ? (
-            <Link href="/post/[slug]" as={`/post/${prevPost.slug}`}>
-              <a className="text-blog-primary">
-                ← {prevPost.frontmatter.title}
-              </a>
-            </Link>
-          ) : (
-            <span />
-          )}
-          {nextPost && (
-            <Link href="/post/[slug]" as={`/post/${nextPost.slug}`}>
-              <a className="text-blog-primary">
-                {nextPost.frontmatter.title} →
-              </a>
-            </Link>
-          )}
+
+      <h3 className="text-2xl text-blog-ternary font-black my-8">
+        Suggested posts:
+      </h3>
+      <div className="flex flex-wrap justify-between md:space-x-4">
+        {suggestions.map(({ frontmatter, slug: sSlug }, i) => (
+          <article
+            key={sSlug}
+            className={`w-full md:w-48 p-4 mb-4 rounded-md bg-blog-bg-secondary flex-none md:flex-auto`}
+          >
+            <header>
+              <h3 className="mb-2">
+                <Link href="/post/[slug]" as={`/post/${sSlug}`}>
+                  <a className="text-2xl text-blog-primary no-underline">
+                    {frontmatter.title}
+                  </a>
+                </Link>
+              </h3>
+              <span className="mb-4 text-xs">{frontmatter.date}</span>
+            </header>
+            <section>
+              <p>{frontmatter.description}</p>
+            </section>
+          </article>
+        ))}
+      </div>
+
+      <div className="p-4 mt-8 rounded-md bg-blog-bg-secondary">
+        <h2 className="text-2xl text-blog-ternary font-black">
+          Subscribe to the Newsletter
+        </h2>
+        <p className="mt-2 max-w-2xl">
+          Subscribe to get my latest content by email.
         </p>
-      </footer>
+        <form className="mt-6" method="POST">
+          <div className="flex flex-wrap justify-between md:px-6 px-0">
+            <input
+              type="name"
+              required
+              placeholder="Your first name"
+              className="w-full md:w-auto px-4 py-3 mb-4 md:mb-0 leading-6 appearance-none border border-blog-ternary shadow-none bg-white rounded-md focus:outline-none focus:shadow-outline-blue focus:border-blog-primary"
+            />
+            <input
+              type="email"
+              required
+              placeholder="Your email"
+              className="w-full md:w-auto px-4 py-3 leading-6 appearance-none border border-blog-ternary shadow-none bg-white rounded-md focus:outline-none focus:shadow-outline-blue focus:border-blog-primary"
+            />
+            <button className="mt-4 h-auto w-full border border-transparent px-6 py-3 leading-6 font-semibold leading-snug bg-indigo-700 text-white rounded-md shadow-md focus:bg-indigo-700 focus:outline-none focus:border-blog-secondary transition ease-in-out duration-150 hover:bg-indigo-600">
+              Subscribe
+            </button>
+          </div>
+        </form>
+        <p className="mt-2 max-w-2xl">
+          I won’t send you spam. <br />
+          Unsubscribe at any time.
+        </p>
+      </div>
+
+      <PostFooter prevPost={prevPost} nextPost={nextPost} />
     </Layout>
   )
 }

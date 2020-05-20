@@ -3,6 +3,7 @@ title: Second post
 image: connection.png
 description: The second post is the least memorable.
 date: 2020-05-14T11:00:00.000Z
+suggestions: ['first-post', 'long-text']
 ---
 
 # h1

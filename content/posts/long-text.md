@@ -3,6 +3,7 @@ title: Really really long long text!?!!?!
 image: progress.png
 description: Why is this a thing?
 date: 2020-05-17T11:00:00.000Z
+suggestions: ['first-post', 'second-post', 'long-text']
 ---
 
 # h1
