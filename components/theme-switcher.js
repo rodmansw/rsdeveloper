@@ -9,6 +9,7 @@ export default function ThemeSwitcher() {
 
   return (
     <ReactToggle
+      aria-label="Theme switcher"
       checked={darkMode.value}
       onChange={darkMode.toggle}
       icons={{

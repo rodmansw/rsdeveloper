@@ -4,6 +4,10 @@ import SutroTheme from 'typography-theme-sutro'
 delete SutroTheme.googleFonts
 
 SutroTheme.overrideThemeStyles = ({ rhythm }, options) => ({
+  body: {
+    fontFamily:
+      'system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif'
+  },
   'h1,h2,h3,h4,h5,h6': {
     fontFamily: 'Montserrat,sans-serif',
     marginTop: rhythm(1 / 2),

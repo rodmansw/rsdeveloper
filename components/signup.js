@@ -34,7 +34,7 @@ export default function Signup() {
           />
           <button
             data-element="submit"
-            className="mt-4 h-auto w-full border border-transparent px-6 py-3 leading-6 font-semibold leading-snug bg-indigo-700 text-white rounded-md shadow-md focus:bg-indigo-700 focus:outline-none focus:border-blog-secondary transition ease-in-out duration-150 hover:bg-indigo-600"
+            className="cursor-pointer mt-4 h-auto w-full border border-transparent px-6 py-3 leading-6 font-semibold leading-snug bg-indigo-700 text-white rounded-md shadow-md focus:bg-indigo-700 focus:outline-none focus:border-blog-secondary transition ease-in-out duration-150 hover:bg-indigo-600"
           >
             Subscribe
           </button>
