@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 import ReactMarkdown from 'react-markdown/with-html'
-import Link from 'next/link'
 
 import Layout from 'components/layout'
 import SEO from 'components/seo'
-import Image from 'components/image'
+import SuggestedPosts from 'components/suggested-posts'
+import SignUp from 'components/signup'
 import PostFooter from 'components/post-footer'
 import {
   InlineCode,
@@ -24,7 +24,7 @@ export default function Post({
   slug,
   prevPost,
   nextPost,
-  suggestions
+  suggestions = []
 }) {
   const postUrl = `post/${slug}`
   const discussUrl = `https://mobile.twitter.com/search?q=${encodeURIComponent(
@@ -71,64 +71,9 @@ export default function Post({
         Discuss on Twitter
       </a>
 
-      <h3 className="text-2xl text-blog-ternary font-black my-8">
-        Suggested posts:
-      </h3>
-      <div className="flex flex-wrap justify-between md:space-x-4">
-        {suggestions.map(({ frontmatter, slug: sSlug }, i) => (
-          <article
-            key={sSlug}
-            className={`w-full md:w-48 p-4 mb-4 rounded-md bg-blog-bg-secondary flex-none md:flex-auto`}
-          >
-            <header>
-              <h3 className="mb-2">
-                <Link href="/post/[slug]" as={`/post/${sSlug}`}>
-                  <a className="text-2xl text-blog-primary no-underline">
-                    {frontmatter.title}
-                  </a>
-                </Link>
-              </h3>
-              <span className="mb-4 text-xs">{frontmatter.date}</span>
-            </header>
-            <section>
-              <p>{frontmatter.description}</p>
-            </section>
-          </article>
-        ))}
-      </div>
+      {suggestions.length && <SuggestedPosts posts={suggestions} />}
 
-      <div className="p-4 mt-8 rounded-md bg-blog-bg-secondary">
-        <h2 className="text-2xl text-blog-ternary font-black">
-          Subscribe to the Newsletter
-        </h2>
-        <p className="mt-2 max-w-2xl">
-          Subscribe to get my latest content by email.
-        </p>
-        <form className="mt-6" method="POST">
-          <div className="flex flex-wrap justify-between md:px-6 px-0">
-            <input
-              type="name"
-              required
-              placeholder="Your first name"
-              className="w-full md:w-auto px-4 py-3 mb-4 md:mb-0 leading-6 appearance-none border border-blog-ternary shadow-none bg-white rounded-md focus:outline-none focus:shadow-outline-blue focus:border-blog-primary"
-            />
-            <input
-              type="email"
-              required
-              placeholder="Your email"
-              className="w-full md:w-auto px-4 py-3 leading-6 appearance-none border border-blog-ternary shadow-none bg-white rounded-md focus:outline-none focus:shadow-outline-blue focus:border-blog-primary"
-            />
-            <button className="mt-4 h-auto w-full border border-transparent px-6 py-3 leading-6 font-semibold leading-snug bg-indigo-700 text-white rounded-md shadow-md focus:bg-indigo-700 focus:outline-none focus:border-blog-secondary transition ease-in-out duration-150 hover:bg-indigo-600">
-              Subscribe
-            </button>
-          </div>
-        </form>
-        <p className="mt-2 max-w-2xl">
-          I won’t send you spam. <br />
-          Unsubscribe at any time.
-        </p>
-      </div>
-
+      <SignUp />
       <PostFooter prevPost={prevPost} nextPost={nextPost} />
     </Layout>
   )

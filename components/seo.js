@@ -9,8 +9,9 @@ const siteMetadata = getSiteMetaData()
 export default function Seo({
   title,
   image,
-  description = '',
-  canonicalUrl = ''
+  description,
+  canonicalUrl,
+  keywords = 'rodman swanston, rodman, swanston, rod swanston, rodman_sw, roman-sw, rodman sw, rodman blog, personal blog, rs, rs developer, rsdeveloper, developer blog, rs blog'
 }) {
   const metaDescription = description || siteMetadata.description
 
@@ -30,10 +31,7 @@ export default function Seo({
       {canonicalUrl && (
         <link rel="canonical" href={`${siteMetadata.siteUrl}${canonicalUrl}`} />
       )}
-      <meta
-        name="keywords"
-        content="rodman swanston, rodman, swanston, personal blog, rodman_sw, roman-sw, rodman sw, rodman blog, rs, rs developer, rsdeveloper, developer blog, rs blog"
-      />
+      <meta name="keywords" content={keywords} />
 
       <meta name="description" content={metaDescription} />
       <meta property="og:type" content="object" />
