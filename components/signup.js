@@ -1,6 +1,6 @@
 export default function Signup() {
   return (
-    <div className="p-4 mt-8 rounded-md bg-blog-bg-secondary">
+    <div className="p-4 rounded-md bg-blog-bg-secondary">
       <h2 className="text-2xl text-blog-ternary font-black">
         Subscribe to the Newsletter
       </h2>
